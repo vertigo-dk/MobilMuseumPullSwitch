@@ -51,7 +51,7 @@ void loop() {
       char str[9] = "/switch/";
       str[8] = 49 + i;
       OSCMessage msg(str);
-      msg.add(str).add((bool)debouncer[i].read());
+      msg.add((int)debouncer[i].read());
       Udp.beginPacket(outIp, outPort);
       msg.send(Udp); // send the bytes to the SLIP stream
       Udp.endPacket(); // mark the end of the OSC Packet
